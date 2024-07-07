@@ -1,0 +1,37 @@
+#
+# Auto-Generated file. Do not edit!
+#
+
+# Add inputs and outputs from these tool invocations to the build variables
+C_SRCS += \
+../RTThread/components/dfs/src/dfs.c \
+../RTThread/components/dfs/src/dfs_file.c \
+../RTThread/components/dfs/src/dfs_fs.c \
+../RTThread/components/dfs/src/dfs_posix.c \
+../RTThread/components/dfs/src/poll.c \
+../RTThread/components/dfs/src/select.c
+
+OBJS += \
+./RTThread/components/dfs/src/dfs.o \
+./RTThread/components/dfs/src/dfs_file.o \
+./RTThread/components/dfs/src/dfs_fs.o \
+./RTThread/components/dfs/src/dfs_posix.o \
+./RTThread/components/dfs/src/poll.o \
+./RTThread/components/dfs/src/select.o
+
+C_DEPS += \
+./RTThread/components/dfs/src/dfs.d \
+./RTThread/components/dfs/src/dfs_file.d \
+./RTThread/components/dfs/src/dfs_fs.d \
+./RTThread/components/dfs/src/dfs_posix.d \
+./RTThread/components/dfs/src/poll.d \
+./RTThread/components/dfs/src/select.d
+
+# Each subdirectory must supply rules for building sources it contributes
+RTThread/components/dfs/src/%.o: ../RTThread/components/dfs/src/%.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: SDE Lite C Compiler'
+	D:/LoongIDE/mips-2011.03/bin/mips-sde-elf-gcc.exe -mips32 -G0 -EL -msoft-float -DLIB_LVGL -DLS1B -DOS_RTTHREAD  -O0 -g -Wall -c -fmessage-length=0 -pipe -I"../" -I"../include" -I"$(GCC_SPECS)/$(OS)/lvgl-7.0.1" -I"../ls1x-drv/include" -I"../RTThread/bsp-ls1x" -I"../RTThread/components/dfs/include" -I"../RTThread/components/drivers/include" -I"../RTThread/components/finsh" -I"../RTThread/components/libc/time" -I"../RTThread/include" -I"../RTThread/port/include" -I"../RTThread/port/mips" -I"../src/buzzer" -I"../src/gpio_uart" -I"../src/hdc2080" -I"../src/key" -I"../src/lvgl_ui" -I"../src/other" -I"../src/relay" -I"../src/SPL06_007" -I"../src/tsl2561fn" -I"../src/user_drv" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
