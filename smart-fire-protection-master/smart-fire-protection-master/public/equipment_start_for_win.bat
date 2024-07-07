@@ -1,0 +1,2 @@
+php equipment_start_for_win\start_businessworker.php php equipment_start_for_win\start_gateway.php php equipment_start_for_win\start_register.php
+pause

@@ -1,0 +1,60 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group hidden">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-id" data-rule="required" class="form-control" name="row[id]" type="text" value="{$id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Label')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-label" data-rule="required" class="form-control" name="row[label]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {$typeList}
+        </div>
+    </div>
+    <div class="form-group collapse field-default">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Default')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-default" class="form-control" name="row[default]" type="text">
+        </div>
+    </div>
+    <div class="form-group collapse field-options">
+        <div class="col-xs-12 col-sm-12">
+            <table class="table table-responsive fieldlist" data-name="row[options]" data-template="option-tpl" data-tag="tr">
+                <tr>
+                    <td>{:__('Options')}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="5"><a href="javascript:;" class="btn btn-sm btn-success btn-append"><i class="fa fa-plus"></i> {:__('AddOption')}</a></td>
+                </tr>
+                <textarea name="row[options]" class="form-control hide" cols="30" rows="5">{$options}</textarea>
+            </table>
+            <!--定义模板-->
+            <script type="text/html" id="option-tpl">
+                <tr class="form-inline">
+                    <td><input type="text" name="<%=name%>[<%=index%>]" class="form-control" value="<%=row%>" size="10"></td>
+                    <td><span class="btn btn-sm btn-danger btn-remove"><i class="fa fa-times"></i></span> <span class="btn btn-sm btn-primary btn-dragsort"><i class="fa fa-arrows"></i></span></td>
+                </tr>
+            </script>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Require')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {$requireList}
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

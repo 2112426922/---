@@ -1,0 +1,140 @@
+<div id="content-container" class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2 class="page-header">{:__('图片选择器代码')}</h2>
+                    <form class="form-horizontal" >
+					
+						<div>使用参数说明</div>
+						<table class="table table-bordered">
+							  <thead>
+								<tr>
+								  <th>参数</th>
+								  <th>示例</th>
+								  <th>说明</th>
+								  <th>默认</th>
+								</tr>
+							  </thead>
+							  <tbody>
+								<tr>
+								  <th scope="row">dataMultiple</th>
+								  <td>data-multiple="false”</td>
+								  <td>false 单选图片，true 多选图片</td>
+								  <td>默认为单选图片</td>
+								</tr>
+								<tr>
+								  <th scope="row">dataMaxCount</th>
+								  <td>data-maxcount="0"</td>
+								  <td>0 不限制选择图片数量 5 最大五张图片</td>
+								  <td>默认不限制</td>
+								</tr>
+								<tr>
+								  <th scope="row">dataInput</th>
+								  <td>data-input="row[image]"</td>
+								  <td>回显到input数据，对应input文本name属性</td>
+								  <td>必须填写(接管官方弹窗不需要)</td>
+								</tr>
+								<tr>
+								  <th scope="row">dataShape</th>
+								  <td>data-shape="oblong" </td>
+								  <td>oblong 长方形 square 正方形</td>
+								  <td>为空默认正方形(接管官方弹窗不需要)</td>
+								</tr>
+							  </tbody>
+						</table>
+
+
+						
+<div>图片添加代码</div>
+						<pre><xmp><div class="form-group">
+    <label class="control-label col-xs-12 col-sm-2">{:__('图片单选')}:</label>
+    <div class="col-xs-12 col-sm-8">
+        <input id="c-image" class="form-control" size="50" name="row[image]" type="hidden" value="">
+        <div class="select-upload" style="cursor:pointer;float:left;" data-shape="oblongs"  data-input="row[image]" data-multiple="false">
+            <img src="/assets/img/attach_upload.png" height="100" width="100" style="border:1px dashed #E6E6E6;">
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="control-label col-xs-12 col-sm-2">{:__('图片多选')}:</label>
+    <div class="col-xs-12 col-sm-8">
+        <input id="c-images" class="form-control" size="50" name="row[images]" type="hidden" value="">
+        <div class="select-upload" style="cursor:pointer;float:left;" data-shape="oblongs" data-maxcount="0" data-input="row[images]" data-multiple="true">
+            <img src="/assets/img/attach_upload.png" height="100" width="100" style="border:1px dashed #E6E6E6;">
+        </div>
+    </div>
+</div></xmp></pre>
+
+
+<div>图片修改代码</div>
+						<pre><xmp><div class="form-group">
+    <label class="control-label col-xs-12 col-sm-2">{:__('图片单选')}:</label>
+	<div class="col-xs-12 col-sm-8">
+	    <input id="c-image" class="form-control" size="50" name="row[image]" type="hidden" value="{\$row.image|htmlentities}" >
+	    <div class="select-upload" style="cursor:pointer;float:left;" data-shape="oblongs"  data-input="row[image]" data-multiple="false">
+	        <img src="/assets/img/attach_upload.png" height="100" width="100" style="border:1px dashed #E6E6E6;">
+	    </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="control-label col-xs-12 col-sm-2">{:__('图片多选')}:</label>
+    <div class="col-xs-12 col-sm-8">
+        <input id="c-images" class="form-control" size="50" name="row[images]" type="hidden" value="{\$row.images|htmlentities}" >
+        <div class="select-upload" style="cursor:pointer;float:left;" data-shape="oblongs" data-maxcount="0" data-input="row[images]" data-multiple="true">
+            <img src="/assets/img/attach_upload.png" height="100" width="100" style="border:1px dashed #E6E6E6;">
+        </div>
+    </div>
+</div></xmp></pre>
+                       
+<hr/>
+<div style="margin-bottom:30px;">图片示例效果：</div>
+<div class="form-group">
+    <label class="control-label col-xs-12 col-sm-1">图片单选:</label>
+	<div class="col-xs-12 col-sm-8">
+		<input id="c-image" class="form-control" size="50" name="image" type="hidden" value="">
+		<div class="select-images" style="float:left;margin-right:4%;">
+			<img src="" data-src="" onerror="this.src='/index/ajax/icon?suffix=FAIL';this.onerror=null;" height="100" width="100" style="border:1px dashed #E6E6E6;max-width:100%;object-fit: cover;">
+			<div class="images-delete" data-max="0" data-multiple="0" data-src="" style="position:relative;top:-111px;left:91px;cursor:pointer;">
+				<img src="/assets/img/attach_delete.png" style="height:16px;width:16px;">
+			</div>
+		</div>
+		<div class="select-upload" style="cursor: pointer; float: left; display: none;" data-shape="oblongs" data-input="image" data-multiple="false">
+			<img src="/assets/img/attach_upload.png" height="100" width="100" style="border:1px dashed #E6E6E6;">
+		</div>
+	</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label col-xs-12 col-sm-1">图片多选:</label>
+	
+	<div class="col-xs-12 col-sm-8">
+		<input id="c-images" class="form-control" size="50" name="images" type="hidden" value="">
+			<div class="select-images" style="float:left;margin-right:4%;">
+				<img src="" data-src="" onerror="this.src='/index/ajax/icon?suffix=FAIL';this.onerror=null;" height="100" width="100" style="border:1px dashed #E6E6E6;max-width:100%;object-fit: cover;">
+				<div class="images-delete" data-max="3" data-multiple="1" data-src="" style="position:relative;top:-111px;left:91px;cursor:pointer;">
+					<img src="/assets/img/attach_delete.png" style="height:16px;width:16px;">
+				</div>
+			</div>
+			
+			<div class="select-images" style="float:left;margin-right:4%;">
+				<img src="" data-src="" onerror="this.src='/index/ajax/icon?suffix=FAIL';this.onerror=null;" height="100" width="100" style="border:1px dashed #E6E6E6;max-width:100%;object-fit: cover;">
+				<div class="images-delete" data-max="3" data-multiple="1" data-src="" style="position:relative;top:-111px;left:91px;cursor:pointer;">
+					<img src="/assets/img/attach_delete.png" style="height:16px;width:16px;">
+				</div>
+			</div>
+			
+			<div class="select-upload" style="cursor: pointer; float: left; display: block;" data-shape="oblongs" data-max="3" data-input="images" data-multiple="true">
+				<img src="/assets/img/attach_upload.png" height="100" width="100" style="border:1px dashed #E6E6E6;">
+			</div>
+	</div>
+
+</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

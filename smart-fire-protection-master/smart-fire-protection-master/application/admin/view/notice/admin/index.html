@@ -1,0 +1,108 @@
+<style>
+    .notice-item td{
+        padding: 10px !important;
+    }
+
+    .page-header {
+        margin-bottom: 0px !important;
+    }
+
+
+    @media (min-width: 1200px) {
+        .container {
+            width: 100%;
+        }
+    }
+    .panel{
+        border: 0;
+        border-radius: 12px;
+    }
+    .panel .panel-body{
+        padding: 0 24px;
+    }
+    .panel .page-header{
+        margin: 0 -24px;
+        border-color: #DDDDDD;
+        padding: 16px 24px 12px;
+        line-height: 30px;
+        font-size: 18px;
+        color: #333;
+        font-weight: bold;
+        overflow: hidden;
+    }
+    .panel .page-header .btn-default{
+        padding: 0 8px;
+        background: #7A888F;
+        line-height: 30px;
+        font-size: 13px;
+        color: #fff;
+        border-radius: 3px;
+    }
+    .panel .notice-item td{
+        border-top: 0 !important;
+        border-bottom: 1px #DDDDDD solid;
+        padding: 16px 0 !important;
+        vertical-align: middle !important;
+        line-height: 24px !important;
+        font-size: 13px !important;
+        color: #333 !important;
+    }
+    .panel .notice-item td a{
+        color: inherit;
+    }
+    .panel .notice-item td a:hover{
+        color: #4397fd;
+    }
+    .panel .notice-item .btn{
+        padding: 0 10px !important;
+        min-width: 50px !important;
+        height: 24px !important;
+        background: #1EB18A !important;
+        text-align: center !important;
+        border-radius: 3px !important;
+    }
+</style>
+
+<div id="content-container" class="container">
+
+    <a href="javascript:;" class="btn btn-primary btn-refresh hidden" title="{:__('Refresh')}" ><i class="fa fa-refresh"></i> </a>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2 class="page-header">
+                        消息通知
+                        {if $haveUnread}
+                        <button class="pull-right btn btn-default mark-event" data-url="{:url('notice/admin/mark')}">全部标记为已读</button>
+                        {/if}
+                    </h2>
+
+                    <table class="table table-hover">
+                        <tbody>
+                        {foreach $list as $v}
+                        <tr class="notice-item">
+                            <td><a data-title="{$v.ext_arr.url_title}" class="{$v.ext_arr.url_type == 2 ? 'btn-dialog' : ''} {$v.ext_arr.url_type == 1 ? 'btn-addtabs' : ''}" href="{$v.ext_arr.url ?? 'javascript:;'}" target="{:isset($v.ext_arr.url_type) && !empty($v.ext_arr.url) && $v.ext_arr.url_type == 3 ? 'target':'_self'}">{$v.content}</a></td>
+                            <td>{$v.createtime|time_text}</td>
+                            <td style="text-align: center">
+                                {if $v.readtime == null}
+                                <button class="btn btn-success mark-event" data-url="{:url('notice/admin/mark', ['id' => $v.id])}">已读</button>
+                                {else}
+                                已读
+                                {/if}
+                            </td>
+                        </tr>
+                        {/foreach}
+                        </tbody>
+                    </table>
+
+                    {if $list->count() == 0}
+                    <div class="nothing" style="text-align: center;">暂无消息</div>
+                    {/if}
+
+                    {$list->render()}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

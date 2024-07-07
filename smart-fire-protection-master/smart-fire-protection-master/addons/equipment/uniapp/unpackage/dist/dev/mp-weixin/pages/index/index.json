@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "设备管理系统",
+  "usingComponents": {
+    "scan": "/pages/index/scan",
+    "workbench": "/pages/index/workbench"
+  }
+}

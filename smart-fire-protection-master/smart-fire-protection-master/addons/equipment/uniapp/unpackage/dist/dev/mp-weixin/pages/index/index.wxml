@@ -1,0 +1,1 @@
+<view><block wx:if="{{pageCur=='scan'}}"><scan vue-id="8dd740cc-1" bind:__l="__l"></scan></block><block wx:if="{{pageCur=='workbench'}}"><workbench vue-id="8dd740cc-2" bind:__l="__l"></workbench></block></view>

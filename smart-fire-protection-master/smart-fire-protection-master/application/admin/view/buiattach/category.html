@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="box">
+            <div class="panel-body">
+                <form id="second-form"  role="form" data-toggle="validator" method="POST" action="{:url('general.config/edit')}">
+					{:token()}
+                    <div class="form-group row">
+                        <div class="col-xs-12">
+							<dl class="fieldlist" data-name="row[attachmentcategory]">
+								<dd><ins>分类名</ins><ins>分类值</ins></dd>
+								<dd>
+									<a href="javascript:;" class="btn btn-sm btn-success btn-append"><i class="fa fa-plus"></i> 追加</a>
+								</dd>
+								<textarea name="row[attachmentcategory]" class="form-control hide" cols="30" rows="5">{$categoryListJson}</textarea>
+							</dl>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-xs-12"></label>
+                        <div class="col-xs-12">
+                            <button id="submit" type="submit" class="btn btn-success btn-embossed">{:__('OK')}</button>
+                            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

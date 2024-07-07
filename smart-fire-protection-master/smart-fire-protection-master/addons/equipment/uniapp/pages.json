@@ -1,0 +1,146 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "设备管理系统"
+			}
+		},
+		{
+			"path": "pages/index/workbench",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/index/scan",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/index/search",
+			"style": {
+				"navigationBarTitleText": "搜索设备",
+				"backgroundColorTop": "#FFFFFF",
+				"backgroundColorBottom": "#F1F1F1"
+			}
+		},
+		{
+			"path": "pages/mine/manage",
+			"style": {
+				"navigationBarTitleText": "个人中心"
+			}
+		},
+		{
+			"path": "pages/equipment/archives",
+			"style": {
+				"navigationBarTitleText": "设备档案",
+				"backgroundColorTop": "#F1F1F1",
+				"backgroundColorBottom": "#F1F1F1"
+			}
+		},
+		{
+			"path": "pages/equipment/list",
+			"style": {
+				"navigationBarTitleText": "设备列表",
+				"backgroundColorTop": "#F1F1F1",
+				"backgroundColorBottom": "#F1F1F1"
+			}
+		},
+		{
+			"path": "pages/equipment/info",
+			"style": {
+				"navigationBarTitleText": "设备详情",
+				"backgroundColorBottom": "#F1F1F1"
+			}
+		},
+		{
+			"path": "pages/repair/list",
+			"style": {
+				"navigationBarTitleText": "维修工单",
+				"backgroundColorTop": "#F1F1F1",
+				"backgroundColorBottom": "#F1F1F1"
+			}
+		},
+		{
+			"path": "pages/repair/repair",
+			"style": {
+				"navigationBarTitleText": "设备报修",
+				"backgroundColorTop": "#F1F1F1",
+				"backgroundColorBottom": "#F1F1F1"
+			}
+		},
+		{
+			"path": "pages/repair/register",
+			"style": {
+				"navigationBarTitleText": "维修登记",
+				"backgroundColorTop": "#F1F1F1",
+				"backgroundColorBottom": "#F1F1F1"
+			}
+		},
+		{
+			"path": "pages/repair/info",
+			"style": {
+				"navigationBarTitleText": "工单详情",
+				"backgroundColorTop": "#F1F1F1",
+				"backgroundColorBottom": "#F1F1F1"
+			}
+		},
+		{
+			"path": "pages/repair/record",
+			"style": {
+				"navigationBarTitleText": "维修详情",
+				"backgroundColorTop": "#F1F1F1",
+				"backgroundColorBottom": "#F1F1F1"
+			}
+		},
+		{
+			"path": "pages/plan/dotask",
+			"style": {
+				"navigationBarTitleText": "计划任务",
+				"backgroundColorTop": "#F1F1F1",
+				"backgroundColorBottom": "#F1F1F1"
+			}
+		},
+		{
+			"path": "pages/plan/info",
+			"style": {
+				"navigationBarTitleText": "详情",
+				"backgroundColorTop": "#F1F1F1",
+				"backgroundColorBottom": "#F1F1F1"
+			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "设备管理系统",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FFFFFF"
+	},
+	"tabBar": {
+		"color": "#CDCDCD",
+		"selectedColor": "#333333",
+		"borderStyle": "white",
+		"backgroundColor": "#FFFFFF",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/menu_search.png",
+				"selectedIconPath": "static/menu_search_selected.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/mine/manage",
+				"iconPath": "static/menu_mine.png",
+				"selectedIconPath": "static/menu_mine_selected.png",
+				"text": "我的"
+			}
+		]
+	}
+}

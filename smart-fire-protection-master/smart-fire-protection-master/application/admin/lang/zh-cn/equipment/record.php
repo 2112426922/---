@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'Id' => 'ID',
+    'Equipment_id' => '设备ID',
+    'Relate_id' => '关联ID',
+    'Add_uid' => '添加用户ID',
+    'Name' => '记录名称',
+    'Type' => '记录类型',
+    // 'Content'      => '记录内容',
+    'Status' => '状态',
+    'Createtime' => '创建时间',
+    'Updatetime' => '更新时间',
+    'Deletetime' => '删除时间',
+    'Qrcode' => '二维码',
+    'QrcodeTag' => '二维码标签',
+    'EquipmentCode' => '设备编号',
+    'EquipmentName' => '设备名称',
+    'EquipmentModel' => '型号',
+    'RecordName' => '记录名称',
+    'RecordTime' => '记录日期',
+    'RecordUser' => '登记人员',
+    'RecordContent' => '巡检项',
+    'FieldName' => '巡检项',
+    'Image' => '现场照片',
+    'Other' => '其他',
+];

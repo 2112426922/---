@@ -1,0 +1,63 @@
+<?php
+
+return [
+    [
+        'name' => 'type',
+        'title' => '登录主题',
+        'type' => 'radio',
+        'content' => [
+            -1 => '默认主题',
+            3 => '数据中心主题',
+            2 => '酷炫科技主题',
+            5 => '商务主题',
+        ],
+        'value' => '3',
+        'rule' => '',
+        'msg' => '',
+        'tip' => '',
+        'ok' => '',
+        'extend' => '',
+    ],
+    [
+        'name' => 'num',
+        'title' => '免验证码输入次数',
+        'type' => 'number',
+        'content' => [],
+        'value' => '3',
+        'rule' => 'required',
+        'msg' => '',
+        'tip' => '',
+        'ok' => '',
+        'extend' => '',
+    ],
+    [
+        'name' => 'dev',
+        'title' => '调试模式',
+        'type' => 'radio',
+        'content' => [
+            1 => '开启',
+            0 => '不开启',
+        ],
+        'value' => '0',
+        'rule' => '',
+        'tip' => '',
+        'ok' => '',
+        'extend' => '',
+        'visible' => '',
+    ],
+    [
+        'name' => 'close_fast',
+        'title' => '关闭自带登录',
+        'type' => 'radio',
+        'content' => [
+            1 => '关闭',
+            0 => '不关闭',
+        ],
+        'value' => '1',
+        'rule' => 'required',
+        'msg' => '',
+        'tip' => '',
+        'ok' => '',
+        'extend' => '',
+    ],
+];

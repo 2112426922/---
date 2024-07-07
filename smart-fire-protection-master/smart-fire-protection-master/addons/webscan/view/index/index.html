@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>温馨提示</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        *{box-sizing:border-box;margin:0;padding:0;font-family:Lantinghei SC,Open Sans,Arial,Hiragino Sans GB,Microsoft YaHei,"微软雅黑",STHeiti,WenQuanYi Micro Hei,SimSun,sans-serif;-webkit-font-smoothing:antialiased}
+        body{padding:70px 0;background:#edf1f4;font-weight:400;font-size:1pc;-webkit-text-size-adjust:none;color:#333}
+        a{outline:0;color:#3498db;text-decoration:none;cursor:pointer}
+        .system-message{margin:20px 5%;padding:40px 20px;background:#fff;box-shadow:1px 1px 1px hsla(0,0%,39%,.1);text-align:center}
+        .system-message h1{margin:0;margin-bottom:9pt;color:#444;font-weight:400;font-size:40px}
+        .system-message .jump,.system-message .image{margin:20px 0;padding:0;padding:10px 0;font-weight:400}
+        .system-message .jump{font-size:14px}
+        .system-message .jump a{color:#333}
+        .system-message p{font-size:9pt;line-height:20px}
+        .system-message .btn{display:inline-block;margin-right:10px;width:138px;height:2pc;border:1px solid #44a0e8;border-radius:30px;color:#44a0e8;text-align:center;font-size:1pc;line-height:2pc;margin-bottom:5px;}
+        .success .btn{border-color:#69bf4e;color:#69bf4e}
+        .error .btn{border-color:#ff8992;color:#ff8992}
+        .info .btn{border-color:#3498db;color:#3498db}
+        .copyright p{width:100%;color:#919191;text-align:center;font-size:10px}
+        .system-message .btn-grey{border-color:#bbb;color:#bbb}
+        .clearfix:after{clear:both;display:block;visibility:hidden;height:0;content:"."}
+        @media (max-width:768px){body {padding:20px 0;}}
+        @media (max-width:480px){.system-message h1{font-size:30px;}}
+        .form-control {
+            width: 100%;
+            height: 31px;
+            padding: 6px 12px;
+            font-size: 12px;
+            line-height: 1.42857143;
+            color: #555555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+
+        }
+        .container {
+            margin-right: auto;
+            margin-left: auto;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        @media (min-width: 768px) {
+            .container {
+                width: 750px;
+            }
+        }
+        @media (min-width: 992px) {
+            .container {
+                width: 970px;
+            }
+        }
+        @media (min-width: 1200px) {
+            .container {
+                width: 1170px;
+            }
+        }
+        .screen {
+            max-width: 400px;
+            padding: 0;
+            margin: 100px auto 0 auto;
+        }
+
+    </style>
+</head>
+<body>
+<div class="system-message info container">
+    <h1>{php}echo $captcha?"验证码错误,请重新输入":"经系统检测，您需要输入验证码才可以继续访问";{/php}</h1>
+<div class="screen">
+
+    <div class="input-group" style="margin-bottom: 15px;">
+
+        <div class="input-group-addon" style="padding:0;border:none;cursor:pointer;margin-bottom: 15px;">
+        <img src="{:rtrim('__PUBLIC__', '/')}/index.php?s=/captcha" width="200" height="60" onclick="this.src = '{:rtrim('__PUBLIC__', '/')}/index.php?s=/captcha&r=' + Math.random();"/>
+        </div>
+        <input type="text" name="captcha" id="captcha" class="form-control" placeholder="{:__('输入验证码，继续访问')}" />
+
+    </div>
+    <p class="clearfix">
+        <a href="javascript:post()" class="btn btn-grey">确定</a>
+    </p>
+</div>
+</div>
+<script>
+    function post(){
+        var captcha=document.getElementById('captcha').value;
+        if(!captcha){
+            alert("请输入图片验证码");
+            return false;
+        }
+        var referrer="{$from}";
+        if(referrer==''){
+            alert("找不到上一页");
+            return false;
+        }
+        referrer=referrer+(referrer.indexOf("?",0)>0?"&captcha="+captcha:"?captcha="+captcha);
+        window.location.href=referrer;
+    }
+</script>
+</body>
+</html>

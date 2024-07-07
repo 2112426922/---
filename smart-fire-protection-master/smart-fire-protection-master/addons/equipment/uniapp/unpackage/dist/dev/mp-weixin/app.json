@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/workbench",
+    "pages/index/scan",
+    "pages/index/search",
+    "pages/mine/manage",
+    "pages/equipment/archives",
+    "pages/equipment/list",
+    "pages/equipment/info",
+    "pages/repair/list",
+    "pages/repair/repair",
+    "pages/repair/register",
+    "pages/repair/info",
+    "pages/repair/record",
+    "pages/plan/dotask",
+    "pages/plan/info",
+    "pages/login/login"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "设备管理系统",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#FFFFFF"
+  },
+  "tabBar": {
+    "color": "#CDCDCD",
+    "selectedColor": "#333333",
+    "borderStyle": "white",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/menu_search.png",
+        "selectedIconPath": "static/menu_search_selected.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/mine/manage",
+        "iconPath": "static/menu_mine.png",
+        "selectedIconPath": "static/menu_mine_selected.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

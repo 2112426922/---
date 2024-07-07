@@ -1,0 +1,117 @@
+<div class="panel panel-default panel-intro">
+    
+    <div class="panel-heading">
+        {:build_heading(null,FALSE)}
+        <ul class="nav nav-tabs" data-field="status">
+            <li class="{:$Think.get.status === null ? 'active' : ''}"><a href="#t-all" data-value="" data-toggle="tab">{:__('All')}</a></li>
+            {foreach name="statusList" item="vo"}
+            <li class="{:$Think.get.status === (string)$key ? 'active' : ''}"><a href="#t-{$key}" data-value="{$key}" data-toggle="tab">{$vo}</a></li>
+            {/foreach}
+        </ul>
+    </div>
+
+
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    <div id="toolbar" class="toolbar">
+                        <a href="javascript:;" class="btn btn-primary btn-refresh" title="{:__('Refresh')}" ><i class="fa fa-refresh"></i> </a>
+                        <a href="javascript:;" class="btn btn-success btn-add {:$auth->check('screen/page/add')?'':'hide'}" title="{:__('Add')}" ><i class="fa fa-plus"></i> {:__('Add')}</a>
+                        <a href="javascript:;" class="btn btn-success btn-edit btn-disabled disabled {:$auth->check('screen/page/edit')?'':'hide'}" title="{:__('Edit')}" ><i class="fa fa-pencil"></i> {:__('Edit')}</a>
+                        <a href="javascript:;" class="btn btn-danger btn-del btn-disabled disabled {:$auth->check('screen/page/del')?'':'hide'}" title="{:__('Delete')}" ><i class="fa fa-trash"></i> {:__('Delete')}</a>
+
+<!--                        b***高级授权***-->
+                        <a href="javascript:;" class="btn btn-warning btn-export {:$auth->check('screen/page/export')?'':'hide'}"  title="{:__('Export')}" ><i class="fa fa-download"></i> {:__('Export')}</a>
+                        <a href="javascript:;" class="btn btn-danger btn-import {:$auth->check('screen/page/import')?'':'hide'}" title="{:__('Import')}" id="btn-import-file" data-url="ajax/upload" data-mimetype="zip" data-multiple="false"><i class="fa fa-upload"></i> {:__('Import')}</a>
+<!--                        e***高级授权***-->
+
+                        <div class="dropdown btn-group {:$auth->check('screen/page/multi')?'':'hide'}">
+                            <a class="btn btn-primary btn-more dropdown-toggle btn-disabled disabled" data-toggle="dropdown"><i class="fa fa-cog"></i> {:__('More')}</a>
+                            <ul class="dropdown-menu text-left" role="menu">
+                                <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="status=normal"><i class="fa fa-eye"></i> {:__('Set to normal')}</a></li>
+                                <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="status=hidden"><i class="fa fa-eye-slash"></i> {:__('Set to hidden')}</a></li>
+                            </ul>
+                        </div>
+
+                        <a class="btn btn-success btn-recyclebin btn-dialog {:$auth->check('screen/page/recyclebin')?'':'hide'}" href="screen/page/recyclebin" title="{:__('Recycle bin')}"><i class="fa fa-recycle"></i> {:__('Recycle bin')}</a>
+                    </div>
+                    <table id="table" class="table table-striped table-bordered table-hover table-nowrap"
+                           data-operate-edit="{:$auth->check('screen/page/edit')}"
+                           data-operate-del="{:$auth->check('screen/page/del')}"
+                           width="100%">
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<style type="text/css">
+    .example {
+        height:100%;position: relative;
+    }
+    .example > span {
+        position:absolute;left:15px;top:15px;
+    }
+    .tpl-cover-image {
+        position: relative;
+    }
+    .tpl-cover-bg {
+        position: absolute;
+        background: rgba(0,0,0,.3);
+        width: 100%;
+        height: 100%;
+        top: 0;
+    }
+    .tpl-title {
+        position: absolute;
+        color: white;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        font-size: 20px;
+        top: 50%;
+    }
+</style>
+
+<script id="itemtpl" type="text/html">
+    <div class="col-sm-4 col-md-3">
+        <!--下面四行是为了展示随机图片和标签，可移除-->
+        <% var imagearr = ['']; %>
+        <% var image = '__CDN__/assets/addons/screen/img/bg3.png'; %>
+        <% var labelarr = ['primary', 'success', 'info', 'danger', 'warning']; %>
+        <% var label = labelarr[item.id % 5]; %>
+        <div class="thumbnail example">
+            <span class="btn btn-<%=label%>" style="z-index: 2">ID:<%=item.id%></span>
+            <div class="tpl-cover-image">
+                <img height="200px" src="<%=image%>" style="width:100%;filter: blur(0.5px);" alt="<%=item.title%>">
+                <div class="tpl-cover-bg"></div>
+                <p class="tpl-title"><%=item.title?item.title:'-'%></p>
+            </div>
+            <div class="caption">
+                <p class="text-muted"><%=item.desc?item.desc:'无'%></p>
+                <p class="text-muted">创建时间:<%=Moment(item.createtime*1000).format("YYYY-MM-DD HH:mm:ss")%></p>
+                <div>
+                <p>
+                    <a href="/assets/addons/screen#bigscreen/viewer?reportCode=<%=item.code%>" target="_blank" class="btn btn-primary btn-success btn-detail" data-id="<%=item.id%>"><i class="fa fa-crosshairs"></i> 预览</a>
+                    <a href="/assets/addons/screen#bigscreen/designer?reportCode=<%=item.code%>" target="_blank" class="btn btn-primary btn-warning btn-detail" data-id="<%=item.id%>"><i class="fa fa-cubes"></i> 设计</a>
+                    <a href="#" class="btn btn-primary btn-edit" data-id="<%=item.id%>"><i class="fa fa-pencil"></i> 编辑</a>
+                    <a href="#" class="btn btn-info btn-dialog" data-title="分享" data-url="screen/share?page_id=<%=item.id%>"><i class="fa fa-window-restore"></i> 分享</a>
+                    <span class="pull-right" style="margin-top:10px;">
+                        <input name="checkbox" data-id="<%=item.id%>" type="checkbox" />
+                    </span>
+                </p>
+<!--                   <p>-->
+<!--&lt;!&ndash;                       <a href="#" class="btn btn-danger btn-del" data-id="<%=item.id%>"><i class="fa fa-times"></i> 删除</a>&ndash;&gt;-->
+<!--                       <span class="pull-right" style="margin-top:10px;">-->
+<!--                        <input name="checkbox" data-id="<%=item.id%>" type="checkbox" />-->
+<!--                        </span>-->
+<!--                   </p>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+

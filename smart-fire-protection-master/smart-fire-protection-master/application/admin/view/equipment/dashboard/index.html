@@ -1,0 +1,226 @@
+<style>
+    .box {
+        box-shadow: none;
+    }
+    .info-box {
+        box-shadow: none;
+        margin-bottom: 0;
+    }
+    .info-box-number {
+        font-size: 38px;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-light-blue-gradient">
+            <div class="inner">
+                <h3>{$statisticCount.archiveCount}</h3>
+                <p>设备档案</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-archive"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-light-blue-gradient">
+            <div class="inner">
+                <h3>{$statisticCount.equipmentCount}</h3>
+                <p>设备总数(台)</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-steam"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-teal-gradient">
+            <div class="inner">
+                <h3>{$statisticCount.inspectionCount}</h3>
+                <p>巡检计划</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-recycle"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-teal-gradient">
+            <div class="inner">
+                <h3>{$statisticCount.maintenanceCount}</h3>
+                <p>保养计划</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-clock-o"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <section class="col-lg-6 connectedSortable">
+        <div class="box box-solid">
+            <div class="box-header">
+                <h3 class="box-title">设备运行情况</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4">
+                        <div class="info-box bg-green">
+                            <span class="info-box-icon"><i class="fa fa-heartbeat"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">正常运行</span>
+                                <span class="info-box-number">{$statisticCount.equipmentNormalCount}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="info-box bg-red">
+                            <span class="info-box-icon"><i class="fa fa-stop-circle"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">停机待修</span>
+                                <span class="info-box-number">{$statisticCount.equipmentRepairingCount}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="info-box bg-maroon">
+                            <span class="info-box-icon"><i class="fa fa-ban"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">报废停用</span>
+                                <span class="info-box-number">{$statisticCount.equipmentScrappedCount}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box box-solid">
+            <div class="box-header">
+                <h3 class="box-title">设备维修工单</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-maroon"><i class="fa fa-calendar-times-o"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">维修中工单</span>
+                                <span class="info-box-number">{$statisticCount.repairRegisteredCount}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-maroon"><i class="fa fa-calendar"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">本月维修工单数</span>
+                                <span class="info-box-number">{$statisticCount.repairMonthCount}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="chart tab-pane" id="line-repair" style="position: relative; height: 300px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer no-border">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <div class="knob-label">近7天维修工单数</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box box-solid">
+            <div class="box-header">
+                <h3 class="box-title">设备故障原因</h3>
+            </div>
+            <div class="box-body">
+                <div class="chart tab-pane active" id="pie-chart" style="position: relative; height: 300px;"></div>
+            </div>
+            <div class="box-footer no-border">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <div class="knob-label">本月设备故障原因占比</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="col-lg-6 connectedSortable">
+        <div class="box box-solid">
+            <div class="box-header">
+                <h3 class="box-title">设备巡检计划</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-green"><i class="fa fa-calendar-times-o"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">今日待巡检设备</span>
+                                <span class="info-box-number">{$statisticCount.inspectionTodayPending}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-green"><i class="fa fa-calendar-check-o"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">今日已巡检设备</span>
+                                <span class="info-box-number">{$statisticCount.inspectionTodayFinish}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="chart tab-pane" id="line-inspection" style="position: relative; height: 340px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer no-border">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <div class="knob-label">近7天巡检次数</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box box-solid">
+            <div class="box-header">
+                <h3 class="box-title">设备保养计划</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-olive"><i class="fa fa-calendar-times-o"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">今日待保养设备</span>
+                                <span class="info-box-number">{$statisticCount.maintenanceTodayPending}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-olive"><i class="fa fa-calendar-check-o"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">今日已保养设备</span>
+                                <span class="info-box-number">{$statisticCount.maintenanceTodayFinish}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="chart tab-pane" id="line-maintenance" style="position: relative; height: 340px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer no-border">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <div class="knob-label">近7天保养次数</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

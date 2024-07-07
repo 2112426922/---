@@ -1,0 +1,1 @@
+<view class="container"><view class="scan-content"><image class="logo" src="/static/scan.png" mode="widthFix"></image><button data-event-opts="{{[['tap',[['scancode']]]]}}" class="cu-btn block bg-black margin-tb-sm lg" bindtap="__e"><text class="cuIcon-scan margin-right-xs"></text>扫描设备二维码</button></view></view>
